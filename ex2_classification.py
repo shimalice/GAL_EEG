@@ -68,13 +68,16 @@ scores_LR = cross_val_score(estimator=clf,
                          cv=10,
                          n_jobs=1)
 
-print('CV accuracy scores: %s' % scores_LR)
-print('CV accuracy: %.3f +/- %.3f' % (np.mean(scores_LR), np.std(scores_LR)))
-ind = np.arange(10)
-width = 0.35
-plt.figure()
-plt.bar(ind, scores_LR, width=width)
-plt.xlabel('Folds')
-plt.ylabel('ACC')
-plt.title('CV acc for each fold')
-plt.savefig('cross_val_acc_ex2.png' ,bbox_inches='tight')
+scores_str = ["%.4f" % x for x in scores_LR]
+print(",".join(scores_str))
+
+# print('CV accuracy scores: %s' % scores_LR)
+# print('CV accuracy: %.3f +/- %.3f' % (np.mean(scores_LR), np.std(scores_LR)))
+# ind = np.arange(10)
+# width = 0.35
+# plt.figure()
+# plt.bar(ind, scores_LR, width=width)
+# plt.xlabel('Folds')
+# plt.ylabel('ACC')
+# plt.title('CV acc for each fold')
+# plt.savefig('cross_val_acc_ex2.png' ,bbox_inches='tight')

@@ -14,28 +14,33 @@ cols = ['HandStart','FirstDigitTouch',
         'Replace','BothReleased']
 
 #被験者数
-subjects = range(1,13)
+subject = 1
 ids_tot = []
 pred_tot = []
 
-fnames = glob('input/train/subj1_series1_data.csv')
-print(fnames)
 X = []
 y = []
-for fname in fnames:
-    # 訓練データの読み込み
+
+series = range(1,9)
+y_raw= []
+raw = []
+sequence = []
+################ READ DATA ################################################
+for ser in series:
+    fname = 'input/train/subj%d_series%d_data.csv' % (subject,ser)
+    print(fname)
     data,labels = prepare_data_train(fname)
-    # すべての系列データ(1-8)
-    X.append(data)
-    y.append(labels)
+    raw.append(data)
+    y_raw.append(labels)
+    sequence.extend([ser]*len(data))
 
-# 1次元のlistにする
-X = pd.concat(X)
-y = pd.concat(y)
-
-#numpy arrayにする
+X = pd.concat(raw)
+y = pd.concat(y_raw)
+#transform in numpy array
+#transform train data in numpy array
 X = np.asarray(X.astype(float))
 y = np.asarray(y.astype(float))
+sequence = np.asarray(sequence)
 
 X_Oz = X[:, 29]
 
@@ -72,4 +77,4 @@ plt.bar(ind, scores_LR, width=width)
 plt.xlabel('Folds')
 plt.ylabel('ACC')
 plt.title('CV acc for each fold')
-plt.savefig('cross_val_acc_ex1.png' ,bbox_inches='tight')
+plt.savefig('cross_val_acc_ex2.png' ,bbox_inches='tight')

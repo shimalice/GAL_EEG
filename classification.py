@@ -5,6 +5,7 @@ import pandas as pd
 from dataRead import prepare_data_train
 from preprocess import data_preprocess_train
 from powerSpectrum import spectrum
+from sklearn.model_selection import cross_val_score
 
 cols = ['HandStart','FirstDigitTouch',
         'BothStartLoadPhase','LiftOff',

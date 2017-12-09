@@ -48,7 +48,7 @@ X_Oz = X[:, 29]
 point_cutoff = 40 + 1 #cutoff-frequency[Hz] * 2 + 1
 X_Oz_f = np.empty((0,point_cutoff))
 y_f_handstart = np.empty((0))
-sequence_f = np.empty((0))
+sequence_f = np.empty(0)
 
 ### t-500points(1sec)~t -> remove DC component -> power -> cut-off
 

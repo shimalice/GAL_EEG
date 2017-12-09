@@ -7,6 +7,7 @@ from preprocess import data_preprocess_train
 from powerSpectrum import spectrum
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import LeaveOneGroupOut
 import matplotlib.pyplot as plt
 
 cols = ['HandStart','FirstDigitTouch',

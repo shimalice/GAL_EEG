@@ -7,6 +7,8 @@ from preprocess import data_preprocess_train
 from powerSpectrum import spectrum
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as plt
 
 cols = ['HandStart','FirstDigitTouch',
@@ -66,6 +68,22 @@ scores_LR = cross_val_score(estimator=clf,
 
 scores_str = ["%.4f" % x for x in scores_LR]
 print(",".join(scores_str))
+
+kf = StratifiedKFold(n_splits=10)
+outcomes = []
+fold = 0
+for train_index, test_index in kf.split(X_Oz_f, y_f_handstart):
+    clf = LogisticRegression()
+    fold += 1
+    X_train, X_test = X_Oz_f[train_index], X_Oz_f[test_index]
+    y_train, y_test = y_f_handstart[train_index], y_f_handstart[test_index]
+    clf.fit(X_train, y_train)
+    predictions = clf.predict(X_test)
+    auc = roc_auc_score(y_test, predictions)
+    outcomes.append(auc)
+    print("Fold {0} auc: {1}".format(fold, auc))
+mean_outcome = np.mean(outcomes)
+print('mean_auc', mean_outcome, '\n')
 
 # print('CV accuracy scores: %s' % scores_LR)
 # print('CV accuracy: %.3f +/- %.3f' % (np.mean(scores_LR), np.std(scores_LR)))

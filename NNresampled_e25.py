@@ -199,7 +199,7 @@ for i, subject in enumerate(subjects):
     #               optimizer=SGD(lr=0.00001),
     #               metrics=['accuracy'])
 
-    epochs = 5
+    epochs = 25
     batch_size = 200
 
     ################ Train classifiers ########################################

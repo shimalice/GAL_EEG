@@ -20,6 +20,7 @@ pred_tot = []
 
 X = []
 y = []
+global_auc = []
 
 series = range(1,9)
 y_raw= []

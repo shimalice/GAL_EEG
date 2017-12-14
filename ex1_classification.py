@@ -17,6 +17,7 @@ cols = ['HandStart','FirstDigitTouch',
 
 #被験者数
 subjects = range(1,13)
+seri
 ids_tot = []
 pred_tot = []
 

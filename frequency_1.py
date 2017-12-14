@@ -220,14 +220,10 @@ for i, subject in enumerate(subjects):
         X_train_resampled, X_test_resampled = X_all_resampled[train], X_all_resampled[test]
         y_train_resampled, y_test_resampled = y_all_resampled[train], y_all_resampled[test]
         #apply preprocessing
-        X_train = data_preprocess_train(X_train)
-        X_test = data_preprocess_test(X_test)
+        # X_train = data_preprocess_train(X_train)
+        # X_test = data_preprocess_test(X_test)
 
-        model.compile(loss='categorical_crossentropy', # 交差entropy
-                      optimizer=SGD(lr=0.01),
-                      metrics=['accuracy'])
-        model.fit(X_train_resampled, y_train_resampled, epochs=epochs,
-                     batch_size=batch_size, verbose=1)
+
 
         clf = LogisticRegression()
         clf.fit(X_train_resampled, y_train_resampled)

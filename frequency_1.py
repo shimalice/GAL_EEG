@@ -176,7 +176,7 @@ for i, subject in enumerate(subjects):
         dft_X_Oz_f = np.array(spectrum(X_Oz_m)[:point_cutoff]).reshape((1,-1)) # Power
         X_Oz_f = np.append(X_Oz_f, dft_X_Oz_f, axis=0)
         y_f_handstart = np.append(y_f_handstart, y[stride])
-
+    print("transformed to freq")
     X_all_train, X_all_test, y_all_train, y_all_test = train_test_split(X_Oz_f, y, test_size=0.3, random_state=71)
 
     # Under sampling [0]:[1] = 9:1

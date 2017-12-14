@@ -218,7 +218,7 @@ for i, subject in enumerate(subjects):
         cvfold = cvfold + 1
 
         X_train_resampled, X_test_resampled = X_all_resampled[train], X_all_resampled[test]
-        y_train_resampled, y_test_resampled = y_all_binary[train], y_all_binary[test]
+        y_train_resampled, y_test_resampled = y_all_resampled[train], y_all_resampled[test]
         #apply preprocessing
         X_train = data_preprocess_train(X_train)
         X_test = data_preprocess_test(X_test)

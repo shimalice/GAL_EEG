@@ -178,7 +178,7 @@ for i, subject in enumerate(subjects):
         y_f_handstart = np.append(y_f_handstart, y[stride])
     print("transformed to freq")
     print(X_Oz_f.shape, ":", y_f_handstart.shape, "\n")
-    X_all_train, X_all_test, y_all_train, y_all_test = train_test_split(X_Oz_f, y, test_size=0.3, random_state=71)
+    X_all_train, X_all_test, y_all_train, y_all_test = train_test_split(X_Oz_f, y.flatten(), test_size=0.3, random_state=71)
 
     # Under sampling [0]:[1] = 9:1
     positive_count_train = int(y_all_train.sum())

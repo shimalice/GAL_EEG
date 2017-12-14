@@ -169,7 +169,7 @@ for i, subject in enumerate(subjects):
     point_cutoff = 40 + 1 #cutoff-frequency[Hz] * 2 + 1
     X_Oz_f = np.empty((0,point_cutoff))
     y_f_handstart = np.empty((0))
-    for stride in range(500,len(X_Oz),15):
+    for stride in range(500,len(X_Oz),3):
         """ stride:3, 150msec, 500Hz-> 1.5*500/3個の連続する1 """
         X_Oz_r = X_Oz[stride-500:stride]
         X_Oz_m = X_Oz_r - np.mean(X_Oz_r) # remove DC component
